@@ -1,4 +1,5 @@
 "use client"
+import { Button, Input, Label, TextField } from "@heroui/react"
 
 import { useRouter, useSearchParams, usePathname } from "next/navigation"
 import { useCallback } from "react"
@@ -70,7 +71,7 @@ export function ProductsFilterPanel(): JSX.Element {
 
             <label>
                 Min price
-                <input
+                <Input
                     data-testid="filter-price-min"
                     type="number"
                     value={priceMin}
@@ -78,9 +79,9 @@ export function ProductsFilterPanel(): JSX.Element {
                 />
             </label>
 
-            <button type="button" data-testid="filter-clear" onClick={clearAll}>
+            <Button type="button" data-testid="filter-clear" onClick={clearAll}>
                 Clear all
-            </button>
+            </Button>
 
             <pre data-testid="filter-state">
                 {JSON.stringify({ category, sort, priceMin }, null, 2)}

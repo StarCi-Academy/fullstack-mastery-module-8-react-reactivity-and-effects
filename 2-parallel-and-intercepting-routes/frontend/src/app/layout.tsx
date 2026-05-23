@@ -1,4 +1,6 @@
 import type { ReactNode } from "react"
+import "./globals.css"
+import { HeroUIProvider } from "@/components/providers"
 
 /**
  * Root layout — render hai slot song song: children và modal.
@@ -17,8 +19,10 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body>
-                {children}
+                <HeroUIProvider>
+                    {children}
                 {modal}
+                </HeroUIProvider>
             </body>
         </html>
     )
