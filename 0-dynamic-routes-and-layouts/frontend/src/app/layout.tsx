@@ -3,16 +3,14 @@ import "./globals.css"
 import { HeroUIProvider } from "@/components/providers"
 
 /**
- * Root layout — bọc toàn cây bằng <html>/<body>
-                <HeroUIProvider>
-                    ; áp dụng cho mọi route.
- * (EN: Root layout wrapping the whole tree with html/body; applied to every route.)
+ * Root layout — bọc <html>/<body> + HeroUIProvider, áp dụng cho mọi route.
+ * (EN: Root layout wrapping html/body + HeroUIProvider; applied to every route.)
  */
 export default function RootLayout({ children }: { children: ReactNode }): JSX.Element {
     return (
         <html lang="en">
-            <body>{children}
-                </HeroUIProvider>
+            <body>
+                <HeroUIProvider>{children}</HeroUIProvider>
             </body>
         </html>
     )

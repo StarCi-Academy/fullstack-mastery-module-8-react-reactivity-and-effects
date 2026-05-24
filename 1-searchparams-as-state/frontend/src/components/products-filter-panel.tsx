@@ -79,7 +79,7 @@ export function ProductsFilterPanel(): JSX.Element {
                 />
             </label>
 
-            <Button type="button" data-testid="filter-clear" onClick={clearAll}>
+            <Button type="button" data-testid="filter-clear" onPress={clearAll}>
                 Clear all
             </Button>
 

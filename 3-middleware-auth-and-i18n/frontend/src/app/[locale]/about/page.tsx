@@ -9,8 +9,13 @@ type Locale = keyof typeof TRANSLATIONS
  * Locale-aware about page — đọc params.locale, fallback `en`.
  * (EN: Locale-aware about page — reads params.locale with `en` fallback.)
  */
-export default function AboutPage({ params }: { params: { locale: string } }): JSX.Element {
-    const lang = (TRANSLATIONS[params.locale as Locale] ? params.locale : "en") as Locale
+export default async function AboutPage({
+    params,
+}: {
+    params: Promise<{ locale: string }>
+}): Promise<JSX.Element> {
+    const { locale } = await params
+    const lang = (TRANSLATIONS[locale as Locale] ? locale : "en") as Locale
     const t = TRANSLATIONS[lang]
     return (
         <main>

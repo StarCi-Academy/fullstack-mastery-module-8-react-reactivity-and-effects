@@ -1,4 +1,6 @@
-import Link from "next/link"
+"use client"
+import { useRouter } from "next/navigation"
+import { use } from "react"
 
 /**
  * Intercepting route `(.)photos/[id]` — chặn navigation từ "/" qua "/photos/[id]"
@@ -6,12 +8,20 @@ import Link from "next/link"
  *
  * (EN: Intercepting route `(.)photos/[id]` — intercepts navigation from "/" to
  * "/photos/[id]" and renders a modal into the @modal slot instead of a full-page nav.)
+ *
+ * Close button gọi router.back() — đẩy history pop để Next.js dispose @modal slot.
+ * Link href="/" KHÔNG đóng modal vì Next.js coi đó là navigation mới và giữ slot.
+ * (EN: Close button calls router.back() so Next.js pops history and disposes the @modal
+ * slot. Link href="/" does NOT close it because Next.js treats that as a new nav and
+ * keeps the slot mounted.)
  */
 export default function PhotoModalPage({
     params,
 }: {
-    params: { id: string }
+    params: Promise<{ id: string }>
 }): JSX.Element {
+    const { id } = use(params)
+    const router = useRouter()
     return (
         <div
             data-testid="photo-modal"
@@ -25,9 +35,11 @@ export default function PhotoModalPage({
             }}
         >
             <article style={{ background: "white", padding: 24, minWidth: 320 }}>
-                <h2 data-testid="modal-title">Photo {params.id} — modal</h2>
+                <h2 data-testid="modal-title">Photo {id} — modal</h2>
                 <p data-testid="modal-marker">Rendered via intercepting route.</p>
-                <Link href="/" data-testid="modal-close">Close</Link>
+                <button data-testid="modal-close" type="button" onClick={() => router.back()}>
+                    Close
+                </button>
             </article>
         </div>
     )

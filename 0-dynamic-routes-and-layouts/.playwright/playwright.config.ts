@@ -13,11 +13,11 @@ export default defineConfig({
         screenshot: "only-on-failure",
     },
     webServer: {
-        command: "npm run dev",
+        command: "npm install --prefer-offline && npm run dev",
         cwd: "../frontend",
         port: 3001,
         reuseExistingServer: !process.env.CI,
-        timeout: 60_000,
+        timeout: 120_000,
     },
     projects: [
         {
