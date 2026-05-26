@@ -3,12 +3,16 @@ import { AppModule } from "./app.module"
 
 /**
  * Bootstrap NestJS — bật CORS để Next.js middleware (server-side) gọi được.
- * (EN: Bootstrap NestJS — enable CORS so Next.js middleware (server-side) can call.)
+ * Đọc PORT + FRONTEND_ORIGIN từ env để hỗ trợ port collision retry.
+ * (EN: Bootstrap NestJS — enable CORS so Next.js middleware (server-side) can call.
+ * Reads PORT + FRONTEND_ORIGIN from env to support port collision retry.)
  */
 async function bootstrap(): Promise<void> {
     const app = await NestFactory.create(AppModule)
-    app.enableCors({ origin: "http://localhost:3001", credentials: true })
-    await app.listen(3000)
+    const origin = process.env.FRONTEND_ORIGIN ?? "http://localhost:3001"
+    app.enableCors({ origin, credentials: true })
+    const port = Number(process.env.PORT ?? 3000)
+    await app.listen(port)
 }
 
 void bootstrap()

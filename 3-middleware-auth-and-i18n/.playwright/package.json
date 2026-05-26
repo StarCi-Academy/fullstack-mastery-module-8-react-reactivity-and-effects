@@ -1,0 +1,13 @@
+{
+    "name": "fs-m8-l3-playwright",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "test:e2e": "playwright test --config ./playwright.config.ts",
+        "test:e2e:headed": "playwright test --config ./playwright.config.ts --headed",
+        "test:e2e:ui": "playwright test --config ./playwright.config.ts --ui"
+    },
+    "devDependencies": {
+        "@playwright/test": "^1.45.0"
+    }
+}
