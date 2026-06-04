@@ -1,6 +1,5 @@
 /**
- * Login stub — nơi middleware redirect khi unauth.
- * (EN: Login stub — where middleware redirects unauthenticated requests.)
+ * Login stub — where middleware redirects unauthenticated requests.
  */
 export default function LoginPage(): JSX.Element {
     return (

@@ -2,8 +2,7 @@ import type { ReactNode } from "react"
 import Link from "next/link"
 
 /**
- * Nested layout cho /products/* — render header chung cho mọi product page.
- * (EN: Nested layout for /products/* — renders a shared header across all product pages.)
+ * Nested layout for /products/* — renders a shared header across all product pages.
  */
 export default function ProductsLayout({ children }: { children: ReactNode }): JSX.Element {
     return (

@@ -4,17 +4,12 @@ import { use } from "react"
 import { Modal, Button, useOverlayState } from "@heroui/react"
 
 /**
- * Intercepting route `(.)photos/[id]` — chặn navigation từ "/" qua "/photos/[id]"
- * và render modal vào slot @modal thay vì navigate full-page.
+ * Intercepting route `(.)photos/[id]` — intercepts navigation from "/" to
+ * "/photos/[id]" and renders a modal into the @modal slot instead of a full-page nav.
  *
- * (EN: Intercepting route `(.)photos/[id]` — intercepts navigation from "/" to
- * "/photos/[id]" and renders a modal into the @modal slot instead of a full-page nav.)
- *
- * Close button gọi router.back() — đẩy history pop để Next.js dispose @modal slot.
- * Link href="/" KHÔNG đóng modal vì Next.js coi đó là navigation mới và giữ slot.
- * (EN: Close button calls router.back() so Next.js pops history and disposes the @modal
+ * Close button calls router.back() so Next.js pops history and disposes the @modal
  * slot. Link href="/" does NOT close it because Next.js treats that as a new nav and
- * keeps the slot mounted.)
+ * keeps the slot mounted.
  */
 export default function PhotoModalPage({
     params,
@@ -27,7 +22,7 @@ export default function PhotoModalPage({
 
     const close = (): void => {
         state.close()
-        // Bước: đẩy back để Next.js dispose @modal slot (EN: pop history to dispose slot)
+        // Pop history to dispose slot
         router.back()
     }
 

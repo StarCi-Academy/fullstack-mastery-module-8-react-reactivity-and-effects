@@ -1,8 +1,7 @@
 import Link from "next/link"
 
 /**
- * /<locale> home — link sang dashboard và about.
- * (EN: /<locale> home — links to dashboard and about.)
+ * /<locale> home — links to dashboard and about.
  */
 export default async function LocaleHomePage({
     params,

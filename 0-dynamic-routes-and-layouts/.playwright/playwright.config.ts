@@ -1,8 +1,7 @@
 import { defineConfig, devices } from "@playwright/test"
 
 /**
- * Cấu hình Playwright — testDir trỏ tới ./scripts (sibling của .playwright/).
- * (EN: Playwright config — testDir points to ./scripts (sibling of .playwright/).)
+ * Playwright config — testDir points to ./scripts (sibling of .playwright/).
  */
 export default defineConfig({
     testDir: "./scripts",

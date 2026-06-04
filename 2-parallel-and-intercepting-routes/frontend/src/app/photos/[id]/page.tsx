@@ -1,6 +1,5 @@
 /**
- * Full-page version cho /photos/[id] — render khi reload hoặc deep-link.
- * (EN: Full-page version of /photos/[id] — rendered on reload or deep-link.)
+ * Full-page version of /photos/[id] — rendered on reload or deep-link.
  */
 export default async function PhotoFullPage({
     params,

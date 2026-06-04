@@ -6,8 +6,7 @@ const TRANSLATIONS = {
 type Locale = keyof typeof TRANSLATIONS
 
 /**
- * Locale-aware about page — đọc params.locale, fallback `en`.
- * (EN: Locale-aware about page — reads params.locale with `en` fallback.)
+ * Locale-aware about page — reads params.locale with `en` fallback.
  */
 export default async function AboutPage({
     params,

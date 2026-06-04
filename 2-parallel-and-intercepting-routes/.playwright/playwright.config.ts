@@ -1,7 +1,7 @@
 import { defineConfig, devices } from "@playwright/test"
 
 /**
- * Cấu hình Playwright (EN: Playwright config).
+ * Playwright config.
  */
 export default defineConfig({
     testDir: "./scripts",

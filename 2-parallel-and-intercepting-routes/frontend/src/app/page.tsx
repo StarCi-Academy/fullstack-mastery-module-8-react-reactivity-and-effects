@@ -3,8 +3,7 @@ import Link from "next/link"
 import { Card, Chip } from "@heroui/react"
 
 /**
- * Trang chủ — grid ảnh; click vào ảnh sẽ mở modal nhờ intercepting route.
- * (EN: Home — image grid; clicking an image opens a modal via intercepting route.)
+ * Home — image grid; clicking an image opens a modal via intercepting route.
  */
 const PHOTO_IDS = ["1", "2", "3"]
 

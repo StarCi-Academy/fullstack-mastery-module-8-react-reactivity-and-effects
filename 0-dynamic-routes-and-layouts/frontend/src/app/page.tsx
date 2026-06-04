@@ -3,8 +3,7 @@ import Link from "next/link"
 import { Card, Button, Chip } from "@heroui/react"
 
 /**
- * Trang chủ — link sang /products và route-group (marketing).
- * (EN: Home — links to /products and to the (marketing) route group.)
+ * Home — links to /products and to the (marketing) route group.
  */
 export default function HomePage(): JSX.Element {
     const items: Array<{ id: string; href: string; testId: string; label: string; variant: "primary" | "secondary" | "tertiary" }> = [

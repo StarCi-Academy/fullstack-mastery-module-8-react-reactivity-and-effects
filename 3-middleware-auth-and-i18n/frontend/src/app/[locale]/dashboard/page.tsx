@@ -1,6 +1,5 @@
 /**
- * Dashboard — middleware chỉ cho qua khi cookie session hợp lệ.
- * (EN: Dashboard — middleware lets through only when session cookie is valid.)
+ * Dashboard — middleware lets through only when session cookie is valid.
  */
 export default async function DashboardPage({
     params,

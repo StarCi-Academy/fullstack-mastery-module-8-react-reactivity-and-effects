@@ -1,18 +1,11 @@
 import { NextRequest, NextResponse } from "next/server"
 
 /**
- * Middleware Next.js — chạy edge-side trước render.
- * Hai trách nhiệm:
- *   1) Auth: kiểm tra cookie `session` qua POST tới backend /auth/verify-session.
- *      Nếu invalid và path là /dashboard → redirect /login.
- *   2) i18n: nếu URL không có prefix /en|/vi và path không phải /login/api/_next,
- *      redirect sang /en + original path.
- *
- * (EN: Next.js middleware running edge-side before render with two duties:
+ * Next.js middleware running edge-side before render with two duties:
  *   1) Auth: validate `session` cookie via POST to backend /auth/verify-session;
  *      if invalid and path is /dashboard → redirect to /login.
  *   2) i18n: if URL lacks /en or /vi prefix and isn't login/api/_next,
- *      redirect to /en + original path.)
+ *      redirect to /en + original path.
  */
 
 const LOCALES = ["en", "vi"] as const
@@ -39,12 +32,12 @@ function stripLocale(pathname: string): string {
 export async function middleware(req: NextRequest): Promise<NextResponse> {
     const { pathname } = req.nextUrl
 
-    // Bỏ qua tài nguyên nội bộ Next.js (EN: skip Next internals)
+    // Skip Next internals
     if (pathname.startsWith("/_next") || pathname.startsWith("/api")) {
         return NextResponse.next()
     }
 
-    // ── i18n: đảm bảo có locale prefix (EN: ensure locale prefix exists)
+    // ── i18n: ensure locale prefix exists
     if (!hasLocalePrefix(pathname) && pathname !== "/login") {
         const url = req.nextUrl.clone()
         const defaultLocale: Locale = "en"
@@ -52,7 +45,7 @@ export async function middleware(req: NextRequest): Promise<NextResponse> {
         return NextResponse.redirect(url)
     }
 
-    // ── auth gate cho /<locale>/dashboard (EN: auth gate for /<locale>/dashboard)
+    // ── auth gate for /<locale>/dashboard
     const stripped = stripLocale(pathname)
     if (stripped.startsWith("/dashboard")) {
         const token = req.cookies.get("session")?.value ?? null
@@ -83,6 +76,6 @@ export async function middleware(req: NextRequest): Promise<NextResponse> {
 }
 
 export const config = {
-    // Áp dụng cho tất cả trừ asset (EN: applied to everything except assets)
+    // Applied to everything except assets
     matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
 }

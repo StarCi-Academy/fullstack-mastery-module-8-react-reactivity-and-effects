@@ -1,9 +1,7 @@
 /**
- * Dynamic route /products/[id] — Next.js inject params.id (async trong Next 15).
- * (EN: Dynamic route /products/[id] — Next.js injects params.id, async in Next 15.)
+ * Dynamic route /products/[id] — Next.js injects params.id, async in Next 15.
  *
- * Server Component mặc định: không cần "use client" vì chỉ đọc params.
- * (EN: Default Server Component: no "use client" needed since we only read params.)
+ * Default Server Component: no "use client" needed since we only read params.
  */
 export default async function ProductDetailPage({
     params,

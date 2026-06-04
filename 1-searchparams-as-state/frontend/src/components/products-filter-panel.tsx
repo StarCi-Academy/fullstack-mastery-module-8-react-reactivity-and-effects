@@ -7,16 +7,12 @@ import { useCallback } from "react"
 type Sort = "asc" | "desc"
 
 /**
- * ProductsFilterPanel — UI filter (category, sort, priceMin) đồng bộ vào URL.
- * (EN: ProductsFilterPanel — filter UI [category, sort, priceMin] synced to URL.)
+ * ProductsFilterPanel — filter UI [category, sort, priceMin] synced to URL.
  *
- * Đọc state qua useSearchParams; ghi state qua router.replace để không thêm history.
- * (EN: Reads state via useSearchParams; writes via router.replace to avoid history bloat.)
+ * Reads state via useSearchParams; writes via router.replace to avoid history bloat.
  *
- * Lưu ý UI polish: native <select> được giữ thay vì HeroUI Select vì Playwright spec
- * dùng `.selectOption()` chỉ hoạt động với native element. Style bằng Tailwind cho polished.
- * (EN: We keep native <select> rather than HeroUI Select because Playwright `.selectOption()`
- * only works on native form elements. Styling is done with Tailwind for polished look.)
+ * We keep native <select> rather than HeroUI Select because Playwright `.selectOption()`
+ * only works on native form elements. Styling is done with Tailwind for polished look.
  */
 export function ProductsFilterPanel(): JSX.Element {
     const router = useRouter()
@@ -29,14 +25,14 @@ export function ProductsFilterPanel(): JSX.Element {
 
     const updateParam = useCallback(
         (key: string, value: string) => {
-            // Bước 1: clone hiện tại (EN: clone current params)
+            // Step 1: clone current params
             const next = new URLSearchParams(params.toString())
             if (value === "") {
                 next.delete(key)
             } else {
                 next.set(key, value)
             }
-            // Bước 2: replace URL không thêm history entry (EN: replace, no history push)
+            // Step 2: replace URL, no history push
             const qs = next.toString()
             router.replace(qs ? `${pathname}?${qs}` : pathname)
         },

@@ -1,11 +1,10 @@
 import { test, expect } from "@playwright/test"
 
 /**
- * Luồng 2 — auth (cookie valid) truy cập /dashboard thành công.
- * (EN: Flow 2 — authenticated (valid cookie) reaches /dashboard.)
+ * Flow 2 — authenticated (valid cookie) reaches /dashboard.
  */
 test("flow 2 — valid session cookie reaches /en/dashboard", async ({ page, context }) => {
-    // Bước 1: set cookie valid (EN: set valid cookie)
+    // Step 1: set valid cookie
     await context.addCookies([
         {
             name: "session",
@@ -15,9 +14,9 @@ test("flow 2 — valid session cookie reaches /en/dashboard", async ({ page, con
         },
     ])
 
-    // Bước 2: visit (EN: visit)
+    // Step 2: visit
     await page.goto("/en/dashboard")
 
-    // Bước 3: assert dashboard rendered (EN: dashboard rendered)
+    // Step 3: dashboard rendered
     await expect(page.getByTestId("dashboard-title")).toContainText("Dashboard (en)")
 })

@@ -3,8 +3,7 @@ import Link from "next/link"
 import { Card, Button } from "@heroui/react"
 
 /**
- * Trang chủ — link sang /products.
- * (EN: Home — links to /products.)
+ * Home — links to /products.
  */
 export default function HomePage(): JSX.Element {
     return (
