@@ -34,7 +34,7 @@ export function ResponsiveChartClient(): JSX.Element {
             margin={{ top: 8, right: 16, bottom: 0, left: 0 }}
           >
             {/* Subtle grid */}
-            <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" />
 
             {/* Month labels on x-axis */}
             <XAxis

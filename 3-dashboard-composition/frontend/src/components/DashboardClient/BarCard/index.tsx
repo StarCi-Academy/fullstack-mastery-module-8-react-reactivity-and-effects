@@ -27,7 +27,7 @@ export function BarCard({ data, label }: BarCardProps): JSX.Element {
       <div className="mb-2 text-xs font-medium text-muted">By Category</div>
       <ResponsiveContainer width="100%" height={180}>
         <BarChart data={data} margin={{ top: 4, right: 8, bottom: 0, left: 0 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" />
           <XAxis dataKey="category" tick={{ fontSize: 11 }} />
           <YAxis tick={{ fontSize: 11 }} width={45} />
           {/* Tooltip shows the active metric label */}

@@ -11,18 +11,18 @@ import { TOTAL_VALUE, AVG_VALUE } from "../../../lib/data"
 export function ChartSummary(): JSX.Element {
   return (
     <div className="flex flex-wrap items-center gap-3">
-      {/* Total revenue stat */}
-      <Chip variant="soft" color="accent" size="sm">
+      {/* Total revenue stat — capitalize is CSS-only so DOM text stays "total" for e2e */}
+      <Chip variant="soft" color="accent" size="sm" className="capitalize">
         total{" "}
-        <span data-testid="total-value" className="font-semibold">
+        <span data-testid="total-value" className="font-semibold normal-case">
           {TOTAL_VALUE}
         </span>
       </Chip>
 
       {/* Average revenue stat */}
-      <Chip variant="soft" color="success" size="sm">
+      <Chip variant="soft" color="success" size="sm" className="capitalize">
         avg{" "}
-        <span data-testid="avg-value" className="font-semibold">
+        <span data-testid="avg-value" className="font-semibold normal-case">
           {AVG_VALUE}
         </span>
       </Chip>

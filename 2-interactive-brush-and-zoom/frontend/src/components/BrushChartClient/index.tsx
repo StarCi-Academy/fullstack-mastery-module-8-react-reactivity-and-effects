@@ -88,7 +88,7 @@ export function BrushChartClient(): JSX.Element {
       <div data-testid="chart">
         <ResponsiveContainer width="100%" height={280}>
           <LineChart data={DAY_DATA} margin={{ top: 4, right: 8, bottom: 0, left: 0 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" />
             <XAxis dataKey="label" tick={{ fontSize: 11 }} />
             <YAxis tick={{ fontSize: 11 }} />
             <Tooltip />

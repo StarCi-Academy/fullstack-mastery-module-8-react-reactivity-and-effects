@@ -34,7 +34,7 @@ export function RevenueChart({ data, chartType }: RevenueChartProps): JSX.Elemen
   const commonChildren = (
     <>
       {/* dashed background grid */}
-      <CartesianGrid strokeDasharray="3 3" />
+      <CartesianGrid strokeDasharray="3 3" vertical={false} />
       {/* x-axis keyed on month abbreviation */}
       <XAxis dataKey="month" tick={{ fontSize: 12 }} />
       {/* y-axis auto-domain */}
