@@ -1,16 +1,35 @@
 import { HeroUIProvider } from "./components/providers"
-import { ChartsPanel } from "./components"
+import { Local } from "./components/Local"
+import { Sandbox } from "./components/Sandbox"
+
+/** Lesson label (shown above the content in both modes). */
+const TITLE = "Line & Bar Charts"
+/** Lesson description (shown under the label in both modes). */
+const DESCRIPTION =
+  "Render a dataset as a Recharts LineChart, switch to a BarChart — axes, grid, legend, responsive container."
 
 /**
- * App — root component; wraps the tree in HeroUIProvider and centers
- * the ChartsPanel in a max-width container.
+ * App root — shared Label + Description, then the content switches on the
+ * `?sandbox` query param: `<Sandbox/>` for the embedded preview, `<Local/>`
+ * otherwise (what Playwright drives). Single-client lesson, so both render the
+ * same content.
  */
 export default function App(): JSX.Element {
+  // embedded preview loads `/?sandbox=1`; cloned-repo + Playwright load `/`
+  const isSandbox = new URLSearchParams(window.location.search).has("sandbox")
+
   return (
     <HeroUIProvider>
       <main className="min-h-screen bg-background p-3">
         <div className="mx-auto max-w-2xl">
-          <ChartsPanel />
+          {/* Label */}
+          <div className="text-base font-semibold text-foreground">{TITLE}</div>
+          <div className="h-3" />
+          {/* Description */}
+          <div className="text-sm text-muted">{DESCRIPTION}</div>
+          <div className="h-6" />
+          {/* Content */}
+          {isSandbox ? <Sandbox /> : <Local />}
         </div>
       </main>
     </HeroUIProvider>

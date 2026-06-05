@@ -1,0 +1,10 @@
+{
+    "name": "fs-m8-l3-dashboard-composition-playwright",
+    "version": "0.1.0",
+    "private": true,
+    "devDependencies": {
+        "@playwright/test": "^1.45.0",
+        "@types/node": "^20.14.10",
+        "typescript": "^5.5.3"
+    }
+}
