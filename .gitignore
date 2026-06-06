@@ -9,3 +9,13 @@ next-env.d.ts
 *.log
 .env
 .env.local
+build/
+target/
+bin/
+obj/
+out/
+.gradle/
+vendor/
+*.exe
+go-out.txt
+go-err.txt
