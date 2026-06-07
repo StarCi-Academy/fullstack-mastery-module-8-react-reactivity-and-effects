@@ -41,7 +41,7 @@ export function SearchClient(): JSX.Element {
     }
 
     return (
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-3">
             <Card className="flex flex-col gap-3 p-3">
                 <Card.Content className="flex flex-col gap-3 p-0">
                     <Typography.Paragraph size="sm" color="muted">
@@ -81,8 +81,7 @@ export function SearchClient(): JSX.Element {
                     </div>
                 </Card.Content>
             </Card>
-
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div className="grid gap-3 sm:grid-cols-2">
                 <BuggySearch query={query} />
                 <FixedSearch query={query} />
             </div>

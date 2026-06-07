@@ -83,8 +83,8 @@ export function BuggySearch({ query }: BuggySearchProps): JSX.Element {
                     ))}
                 </ul>
             </Card.Content>
-            <Card.Footer className="border-t border-default-200/60 bg-default-100">
-                <div className="mt-3 flex w-full items-center justify-between">
+            <Card.Footer className="border-t border-default-200/60 bg-default-100 p-0">
+                <div className="flex w-full items-center justify-between">
                     <span className="text-sm text-muted">Requests fired</span>
                     <span
                         data-testid="buggy-request-count"
