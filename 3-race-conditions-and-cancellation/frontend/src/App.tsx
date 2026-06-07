@@ -1,0 +1,40 @@
+import { Typography } from "@heroui/react"
+import { HeroUIProvider } from "./components/providers"
+import { Local } from "./components/Local"
+import { Sandbox } from "./components/Sandbox"
+
+/** Lesson label (shown above the content in both modes). */
+const TITLE = "Race Conditions & Cancellation"
+/** Lesson description (shown under the label in both modes). */
+const DESCRIPTION =
+    "Search-as-you-type fires a fetch on every keystroke. The buggy panel has no cleanup, so a slow stale response overwrites the latest query. The fixed panel uses an AbortController + ignore flag in cleanup, so it always shows the newest query's results."
+
+/**
+ * App root — shared Label + Description, then the content switches on the
+ * `?sandbox` query param: `<Sandbox/>` for the embedded preview, `<Local/>`
+ * otherwise (what Playwright drives). Single-client lesson, so both render the
+ * same content.
+ */
+export default function App(): JSX.Element {
+    // embedded preview loads `/?sandbox=1`; cloned-repo + Playwright load `/`
+    const isSandbox = new URLSearchParams(window.location.search).has("sandbox")
+
+    return (
+        <HeroUIProvider>
+            <main className="min-h-screen bg-background p-3">
+                <div className="mx-auto max-w-2xl">
+                    <Typography.Heading level={4} weight="semibold">
+                        {TITLE}
+                    </Typography.Heading>
+                    <div className="h-3" />
+                    <Typography.Paragraph size="sm" color="muted">
+                        {DESCRIPTION}
+                    </Typography.Paragraph>
+                    <div className="h-6" />
+                    {/* Content */}
+                    {isSandbox ? <Sandbox /> : <Local />}
+                </div>
+            </main>
+        </HeroUIProvider>
+    )
+}
