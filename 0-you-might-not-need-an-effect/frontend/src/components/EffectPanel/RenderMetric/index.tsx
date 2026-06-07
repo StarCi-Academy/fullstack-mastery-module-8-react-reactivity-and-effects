@@ -17,7 +17,7 @@ export const RenderMetric = (props: RenderMetricProps): JSX.Element => {
     const { label, value, testId } = props
 
     return (
-        <div className="mt-3 flex w-full items-center justify-between">
+        <div className="flex w-full items-center justify-between">
             <span className="text-sm text-muted">{label}</span>
             <span
                 data-testid={testId}

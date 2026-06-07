@@ -41,6 +41,7 @@ export function BuggyPanel(): JSX.Element {
             <Card.Content className="flex flex-col gap-3 p-0">
                 <Input
                     data-testid="buggy-search"
+                    variant="secondary"
                     aria-label="Search users (buggy panel)"
                     placeholder="Search by name"
                     value={query}
@@ -68,7 +69,7 @@ export function BuggyPanel(): JSX.Element {
                     {" — every keystroke renders twice."}
                 </Typography.Paragraph>
             </Card.Content>
-            <Card.Footer className="border-t border-default-200/60 bg-default-100">
+            <Card.Footer className="border-t border-default-200/60 bg-default-100 p-0">
                 <RenderMetric
                     label="Renders (buggy)"
                     value={renderRef.current}

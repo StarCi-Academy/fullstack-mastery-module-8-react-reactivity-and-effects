@@ -1,4 +1,4 @@
-import { Button, Card, Typography } from "@heroui/react"
+import { Button, Card, Input, Typography } from "@heroui/react"
 import { useState } from "react"
 import { BuggySearch } from "./BuggySearch"
 import { FixedSearch } from "./FixedSearch"
@@ -49,13 +49,13 @@ export function SearchClient(): JSX.Element {
                         <span className="font-semibold text-foreground">Run race</span>
                         {" to fire a slow query then a fast one. Both panels see the same query — only the effect cleanup differs."}
                     </Typography.Paragraph>
-                    <input
+                    <Input
                         data-testid="search-input"
+                        variant="secondary"
                         aria-label="Search query"
                         placeholder="Type a query…"
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}
-                        className="w-full rounded-medium border border-default-200 bg-default-50 px-3 py-2 text-sm text-foreground outline-none focus:border-primary"
                     />
                     <div className="flex flex-wrap items-center gap-3">
                         <Button

@@ -28,8 +28,8 @@ export function StoreReader({ label, slot }: StoreReaderProps): JSX.Element {
     renderRef.current += 1
 
     return (
-        <Card data-testid={`reader-${slot}`} className="border border-default-200/60 rounded-large p-5">
-            <Card.Content className="flex flex-col gap-4 pt-4 p-0">
+        <Card data-testid={`reader-${slot}`} className="flex flex-col gap-3 border border-default-200/60 rounded-large p-3">
+            <Card.Content className="flex flex-col gap-3 p-0">
                 <span className="text-sm font-medium text-foreground/70">{label}</span>
                 <span
                     data-testid={`tick-${slot}`}

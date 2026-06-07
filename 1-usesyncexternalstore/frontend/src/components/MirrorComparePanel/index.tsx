@@ -17,8 +17,8 @@ export function MirrorComparePanel(): JSX.Element {
     const mirrorValue = useBuggyTickMirror()
 
     return (
-        <Card data-testid="mirror-panel" className="border border-default-200/60 rounded-large p-5">
-            <Card.Content className="flex gap-8 pt-4 p-0">
+        <Card data-testid="mirror-panel" className="flex flex-col gap-3 border border-default-200/60 rounded-large p-3">
+            <Card.Content className="flex gap-3 p-0">
                 <div className="flex flex-col gap-1">
                     <span className="text-sm font-medium text-foreground/70">
                         useSyncExternalStore

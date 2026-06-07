@@ -1,4 +1,4 @@
-import { Button, Card } from "@heroui/react"
+import { Button, Card, Chip } from "@heroui/react"
 import { resetQuery, runQuery, useQuery } from "../../lib"
 
 /**
@@ -12,9 +12,9 @@ export function SearchPanel(): JSX.Element {
     const { result, pending } = useQuery()
 
     return (
-        <Card data-testid="search-panel" className="border border-default-200/60 rounded-large p-5">
-            <Card.Content className="flex flex-col gap-4 pt-4 p-0">
-                <div className="flex flex-wrap gap-2">
+        <Card data-testid="search-panel" className="flex flex-col gap-3 border border-default-200/60 rounded-large p-3">
+            <Card.Content className="flex flex-col gap-3 p-0">
+                <div className="flex flex-wrap gap-3">
                     <Button
                         data-testid="btn-race"
                         variant="primary"
@@ -24,10 +24,10 @@ export function SearchPanel(): JSX.Element {
                             runQuery("beta", 50)
                         }}
                     >
-                        slow then fast
+                        Slow Then Fast
                     </Button>
-                    <Button data-testid="btn-query-reset" variant="ghost" onPress={() => resetQuery()}>
-                        reset
+                    <Button data-testid="btn-query-reset" variant="danger" onPress={() => resetQuery()}>
+                        Reset
                     </Button>
                 </div>
                 <span
@@ -36,9 +36,15 @@ export function SearchPanel(): JSX.Element {
                 >
                     {result === "" ? "—" : result}
                 </span>
-                <span data-testid="query-pending" className="text-sm font-medium text-foreground/70">
+                <Chip
+                    data-testid="query-pending"
+                    variant="secondary"
+                    color={pending ? "warning" : "default"}
+                    size="sm"
+                    className="w-fit"
+                >
                     {pending ? "pending" : "idle"}
-                </span>
+                </Chip>
             </Card.Content>
         </Card>
     )

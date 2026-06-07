@@ -12,16 +12,16 @@ import { burstTick, incrementTick, resetTick } from "../../lib"
  */
 export function ControlPanel(): JSX.Element {
     return (
-        <Card data-testid="control-panel" className="border border-default-200/60 rounded-large p-5">
-            <Card.Content className="flex flex-wrap gap-2 pt-4 p-0">
+        <Card data-testid="control-panel" className="flex flex-col gap-3 border border-default-200/60 rounded-large p-3">
+            <Card.Content className="flex flex-wrap gap-3 p-0">
                 <Button data-testid="btn-inc" variant="primary" onPress={() => incrementTick()}>
                     +1
                 </Button>
                 <Button data-testid="btn-burst" variant="outline" onPress={() => burstTick(5)}>
-                    +5 burst
+                    +5 Burst
                 </Button>
-                <Button data-testid="btn-reset" variant="ghost" onPress={() => resetTick()}>
-                    reset
+                <Button data-testid="btn-reset" variant="danger" onPress={() => resetTick()}>
+                    Reset
                 </Button>
             </Card.Content>
         </Card>

@@ -35,6 +35,7 @@ export function FixedPanel(): JSX.Element {
             <Card.Content className="flex flex-col gap-3 p-0">
                 <Input
                     data-testid="fixed-search"
+                    variant="secondary"
                     aria-label="Search users (fixed panel)"
                     placeholder="Search by name"
                     value={query}
@@ -53,7 +54,7 @@ export function FixedPanel(): JSX.Element {
                         {filtered.length}
                     </Typography.Paragraph>
                 </div>
-                <UserList users={filtered} testIdPrefix="fixed" />
+                <UserList users={filtered} testIdPrefix="fixed" boxed />
                 <Typography.Paragraph size="xs" color="muted">
                     {"Computes "}
                     <span className="font-semibold">filtered</span>
@@ -62,7 +63,7 @@ export function FixedPanel(): JSX.Element {
                     {" — one render per keystroke, never stale."}
                 </Typography.Paragraph>
             </Card.Content>
-            <Card.Footer className="border-t border-default-200/60 bg-default-100">
+            <Card.Footer className="border-t border-default-200/60 bg-default-100 p-0">
                 <RenderMetric
                     label="Renders (fixed)"
                     value={renderRef.current}
