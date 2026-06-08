@@ -1,5 +1,17 @@
-import { Button, Card, Chip } from "@heroui/react"
+import { Button, Chip } from "@heroui/react"
+import { useMemo } from "react"
+import { SectionLabel } from "../SectionLabel"
+import { SubLabel } from "../SubLabel"
 import { resetQuery, runQuery, useQuery } from "../../lib"
+
+/** HeroUI Chip color + background for query pending state (matches M12 upload status chip). */
+function queryChipColor(pending: boolean): {
+    textColor: "default" | "warning"
+    bgClass: string
+} {
+    if (pending) return { textColor: "warning", bgClass: "bg-warning/20" }
+    return { textColor: "default", bgClass: "bg-muted/20" }
+}
 
 /**
  * SearchPanel — demonstrates "latest wins" against an async external store read
@@ -11,41 +23,46 @@ import { resetQuery, runQuery, useQuery } from "../../lib"
 export function SearchPanel(): JSX.Element {
     const { result, pending } = useQuery()
 
+    const queryStatus = useMemo((): string => (pending ? "pending" : "idle"), [pending])
+
+    const chipStyle = useMemo(() => queryChipColor(pending), [pending])
+
     return (
-        <Card data-testid="search-panel" className="flex flex-col gap-3 border border-default-200/60 rounded-large p-3">
-            <Card.Content className="flex flex-col gap-3 p-0">
-                <div className="flex flex-wrap gap-3">
-                    <Button
-                        data-testid="btn-race"
-                        variant="primary"
-                        onPress={() => {
-                            // Start a slow request, then immediately a fast one.
-                            runQuery("alpha", 300)
-                            runQuery("beta", 50)
-                        }}
-                    >
-                        Slow Then Fast
-                    </Button>
-                    <Button data-testid="btn-query-reset" variant="danger" onPress={() => resetQuery()}>
-                        Reset
-                    </Button>
-                </div>
+        <section data-testid="search-panel" className="flex flex-col gap-3">
+            <SectionLabel>Async query (latest wins)</SectionLabel>
+            <div className="flex flex-wrap gap-2">
+                <Button
+                    data-testid="btn-race"
+                    variant="primary"
+                    onPress={() => {
+                        // Start a slow request, then immediately a fast one.
+                        runQuery("alpha", 300)
+                        runQuery("beta", 50)
+                    }}
+                >
+                    Slow Then Fast
+                </Button>
+                <Button data-testid="btn-query-reset" variant="danger" onPress={() => resetQuery()}>
+                    Reset
+                </Button>
+            </div>
+            <div className="flex flex-col gap-1">
+                <SubLabel>Result</SubLabel>
                 <span
                     data-testid="query-result"
                     className="text-2xl font-bold tabular-nums text-foreground"
                 >
                     {result === "" ? "—" : result}
                 </span>
-                <Chip
-                    data-testid="query-pending"
-                    variant="secondary"
-                    color={pending ? "warning" : "default"}
-                    size="sm"
-                    className="w-fit"
-                >
-                    {pending ? "pending" : "idle"}
-                </Chip>
-            </Card.Content>
-        </Card>
+            </div>
+            <Chip
+                data-testid="query-pending"
+                color={chipStyle.textColor}
+                size="sm"
+                className={`w-fit capitalize ${chipStyle.bgClass}`}
+            >
+                {queryStatus}
+            </Chip>
+        </section>
     )
 }

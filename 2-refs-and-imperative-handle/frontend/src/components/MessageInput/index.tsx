@@ -54,6 +54,7 @@ export const MessageInput = forwardRef<MessageInputHandle, MessageInputProps>(
         return (
             <Input
                 ref={inputRef}
+                className="shadow-none !border border-default"
                 data-testid="message-input"
                 placeholder="Type a message and press Enter"
                 onKeyDown={handleKeyDown}

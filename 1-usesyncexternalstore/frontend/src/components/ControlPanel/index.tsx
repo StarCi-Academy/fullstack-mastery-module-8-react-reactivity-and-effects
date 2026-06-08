@@ -1,4 +1,5 @@
-import { Button, Card } from "@heroui/react"
+import { Button } from "@heroui/react"
+import { SectionLabel } from "../SectionLabel"
 import { burstTick, incrementTick, resetTick } from "../../lib"
 
 /**
@@ -12,8 +13,9 @@ import { burstTick, incrementTick, resetTick } from "../../lib"
  */
 export function ControlPanel(): JSX.Element {
     return (
-        <Card data-testid="control-panel" className="flex flex-col gap-3 border border-default-200/60 rounded-large p-3">
-            <Card.Content className="flex flex-wrap gap-3 p-0">
+        <section data-testid="control-panel" className="flex flex-col gap-2">
+            <SectionLabel>Controls</SectionLabel>
+            <div className="flex flex-wrap gap-2">
                 <Button data-testid="btn-inc" variant="primary" onPress={() => incrementTick()}>
                     +1
                 </Button>
@@ -23,7 +25,7 @@ export function ControlPanel(): JSX.Element {
                 <Button data-testid="btn-reset" variant="danger" onPress={() => resetTick()}>
                     Reset
                 </Button>
-            </Card.Content>
-        </Card>
+            </div>
+        </section>
     )
 }

@@ -1,6 +1,7 @@
 import { ControlPanel } from "../ControlPanel"
 import { MirrorComparePanel } from "../MirrorComparePanel"
 import { SearchPanel } from "../SearchPanel"
+import { SectionLabel } from "../SectionLabel"
 import { StoreReader } from "../StoreReader"
 import { SubscriptionLegend } from "../SubscriptionLegend"
 import { WindowSizePanel } from "../WindowSizePanel"
@@ -8,18 +9,21 @@ import { WindowSizePanel } from "../WindowSizePanel"
 /**
  * StoreClient — shared lesson content used by both Local and Sandbox.
  *
- * Layout: a legend, two readers of one external store (consistency demo), the
- * control buttons, the sync-vs-mirror comparison, and a live window-size panel
- * (a real browser store read through useSyncExternalStore).
+ * Layout: legend, two reader cards of one external store (side by side), controls,
+ * sync-vs-mirror comparison, live window size, and async query demo — each
+ * section labeled and stacked top to bottom.
  */
 export function StoreClient(): JSX.Element {
     return (
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-6">
             <SubscriptionLegend />
-            <div className="grid gap-3 sm:grid-cols-2">
-                <StoreReader label="Reader A" slot="a" />
-                <StoreReader label="Reader B" slot="b" />
-            </div>
+            <section className="flex flex-col gap-3">
+                <SectionLabel>Store readers</SectionLabel>
+                <div className="flex gap-3">
+                    <StoreReader label="Reader A" slot="a" />
+                    <StoreReader label="Reader B" slot="b" />
+                </div>
+            </section>
             <ControlPanel />
             <MirrorComparePanel />
             <WindowSizePanel />

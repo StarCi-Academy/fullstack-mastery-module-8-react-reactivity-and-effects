@@ -26,7 +26,7 @@ export function FixedPanel(): JSX.Element {
     renderRef.current += 1
 
     return (
-        <Card data-testid="fixed-panel" className="flex flex-col gap-3 p-3">
+        <Card data-testid="fixed-panel" className="flex flex-col gap-3 p-3 shadow-none border">
             <Card.Header className="p-0">
                 <Typography.Heading level={6} weight="semibold">
                     Fixed — derived in render
@@ -63,8 +63,9 @@ export function FixedPanel(): JSX.Element {
                     {" — one render per keystroke, never stale."}
                 </Typography.Paragraph>
             </Card.Content>
-            <Card.Footer className="border-t border-default-200/60 bg-default-100 p-0">
+            <Card.Footer className="border-t p-0">
                 <RenderMetric
+                    className="mt-3"
                     label="Renders (fixed)"
                     value={renderRef.current}
                     testId="fixed-renders"

@@ -32,7 +32,7 @@ export function BuggyPanel(): JSX.Element {
     renderRef.current += 1
 
     return (
-        <Card data-testid="buggy-panel" className="flex flex-col gap-3 p-3">
+        <Card data-testid="buggy-panel" className="flex flex-col gap-3 p-3 shadow-none border">
             <Card.Header className="p-0">
                 <Typography.Heading level={6} weight="semibold">
                     Buggy — effect + setState
@@ -69,8 +69,9 @@ export function BuggyPanel(): JSX.Element {
                     {" — every keystroke renders twice."}
                 </Typography.Paragraph>
             </Card.Content>
-            <Card.Footer className="border-t border-default-200/60 bg-default-100 p-0">
+            <Card.Footer className="border-t p-0">
                 <RenderMetric
+                    className="mt-3"
                     label="Renders (buggy)"
                     value={renderRef.current}
                     testId="buggy-renders"

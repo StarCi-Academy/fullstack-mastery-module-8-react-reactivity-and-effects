@@ -51,7 +51,7 @@ export function BuggySearch({ query }: BuggySearchProps): JSX.Element {
     }, [query])
 
     return (
-        <Card data-testid="buggy-panel" className="flex flex-col gap-3 p-3">
+        <Card data-testid="buggy-panel" className="flex h-full flex-col gap-3 border p-3 shadow-none">
             <Card.Header className="p-0">
                 <Typography.Heading level={6} weight="semibold">
                     Buggy — no cleanup
@@ -83,8 +83,8 @@ export function BuggySearch({ query }: BuggySearchProps): JSX.Element {
                     ))}
                 </ul>
             </Card.Content>
-            <Card.Footer className="border-t border-default-200/60 bg-default-100 p-0">
-                <div className="flex w-full items-center justify-between">
+            <Card.Footer className="border-t p-0">
+                <div className="mt-3 flex w-full items-center justify-between">
                     <span className="text-sm text-muted">Requests fired</span>
                     <span
                         data-testid="buggy-request-count"

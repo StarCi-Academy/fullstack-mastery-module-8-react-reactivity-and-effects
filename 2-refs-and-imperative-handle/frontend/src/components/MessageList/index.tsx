@@ -1,4 +1,4 @@
-import { Card, Typography } from "@heroui/react"
+import { Card, ScrollShadow, Typography } from "@heroui/react"
 import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react"
 import type { ChatMessage, MessageListHandle } from "../../lib"
 
@@ -66,21 +66,24 @@ export const MessageList = forwardRef<MessageListHandle, MessageListProps>(
 
         return (
             <div className="flex flex-col gap-2">
-                <div
+                <ScrollShadow
                     ref={scrollRef}
                     data-testid="message-list"
-                    className="h-48 overflow-y-auto rounded-large border border-default-200/60 p-3 flex flex-col gap-2"
+                    hideScrollBar
+                    orientation="vertical"
+                    size={40}
+                    className="flex h-48 flex-col gap-2 overflow-y-auto rounded-large"
                 >
                     {messages.map((m) => (
                         <Card
                             key={m.id}
                             data-testid={`message-${m.id}`}
-                            className="border border-default-200/60 rounded-medium px-3 py-2"
+                            className="border shadow-none rounded-medium px-3 py-2"
                         >
                             <Typography.Paragraph size="sm">{m.text}</Typography.Paragraph>
                         </Card>
                     ))}
-                </div>
+                </ScrollShadow>
                 {/* Live measurement surfaced for observation / Playwright. */}
                 <Typography.Paragraph size="sm" color="muted">
                     Measured height:{" "}

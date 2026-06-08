@@ -42,7 +42,7 @@ export function SearchClient(): JSX.Element {
 
     return (
         <div className="flex flex-col gap-3">
-            <Card className="flex flex-col gap-3 p-3">
+            <Card className="flex flex-col gap-3 border p-3 shadow-none">
                 <Card.Content className="flex flex-col gap-3 p-0">
                     <Typography.Paragraph size="sm" color="muted">
                         {"Type to search, or press "}

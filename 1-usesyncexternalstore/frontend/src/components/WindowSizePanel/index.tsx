@@ -1,4 +1,5 @@
-import { Card } from "@heroui/react"
+import { MetricCard } from "../MetricCard"
+import { SectionLabel } from "../SectionLabel"
 import { useWindowSize } from "../../lib"
 
 /**
@@ -11,27 +12,22 @@ export function WindowSizePanel(): JSX.Element {
     const { width, height } = useWindowSize()
 
     return (
-        <Card data-testid="window-panel" className="flex flex-col gap-3 border border-default-200/60 rounded-large p-3">
-            <Card.Content className="flex gap-3 p-0">
-                <div className="flex flex-col gap-1">
-                    <span className="text-sm font-medium text-foreground/70">Width</span>
-                    <span
-                        data-testid="window-width"
-                        className="text-2xl font-bold tabular-nums text-foreground"
-                    >
-                        {width}
-                    </span>
-                </div>
-                <div className="flex flex-col gap-1">
-                    <span className="text-sm font-medium text-foreground/70">Height</span>
-                    <span
-                        data-testid="window-height"
-                        className="text-2xl font-bold tabular-nums text-foreground"
-                    >
-                        {height}
-                    </span>
-                </div>
-            </Card.Content>
-        </Card>
+        <section data-testid="window-panel" className="flex flex-col gap-3">
+            <SectionLabel>Window size</SectionLabel>
+            <div className="flex gap-3">
+                <MetricCard
+                    label="Width"
+                    value={width}
+                    testId="window-width"
+                    valueClassName="text-2xl font-bold tabular-nums text-foreground"
+                />
+                <MetricCard
+                    label="Height"
+                    value={height}
+                    testId="window-height"
+                    valueClassName="text-2xl font-bold tabular-nums text-foreground"
+                />
+            </div>
+        </section>
     )
 }
