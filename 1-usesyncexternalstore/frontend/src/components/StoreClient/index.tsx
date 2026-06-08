@@ -13,7 +13,7 @@ import { WindowSizePanel } from "../WindowSizePanel"
  * sync-vs-mirror comparison, live window size, and async query demo — each
  * section labeled and stacked top to bottom.
  */
-export function StoreClient(): JSX.Element {
+export const StoreClient = (): JSX.Element => {
     return (
         <div className="flex flex-col gap-6">
             <SubscriptionLegend />

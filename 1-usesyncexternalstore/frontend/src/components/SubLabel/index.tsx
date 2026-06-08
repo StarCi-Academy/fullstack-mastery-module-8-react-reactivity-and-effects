@@ -9,6 +9,6 @@ interface SubLabelProps {
  *
  * @param props.children Sub-label copy.
  */
-export function SubLabel({ children }: SubLabelProps): JSX.Element {
+export const SubLabel = ({ children }: SubLabelProps): JSX.Element => {
     return <span className="text-sm text-muted">{children}</span>
 }

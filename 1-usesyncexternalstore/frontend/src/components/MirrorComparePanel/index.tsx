@@ -13,7 +13,7 @@ import { useBuggyTickMirror, useTick } from "../../lib"
  * The lesson uses this to argue you should read external sources with
  * `useSyncExternalStore`, not mirror them into state via an effect.
  */
-export function MirrorComparePanel(): JSX.Element {
+export const MirrorComparePanel = (): JSX.Element => {
     const syncValue = useTick()
     const mirrorValue = useBuggyTickMirror()
 

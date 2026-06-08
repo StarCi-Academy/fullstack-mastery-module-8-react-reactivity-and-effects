@@ -20,7 +20,7 @@ interface BuggySearchProps {
  * the user actually wants. Watch `buggy-committed-query` show an outdated query
  * after a slow-then-fast sequence.
  */
-export function BuggySearch({ query }: BuggySearchProps): JSX.Element {
+export const BuggySearch = ({ query }: BuggySearchProps): JSX.Element => {
     // Results currently shown, plus the query they actually belong to. The
     // committed query is the observable proof of the race: it can differ from
     // the latest `query` prop when a stale response wins.
@@ -51,7 +51,7 @@ export function BuggySearch({ query }: BuggySearchProps): JSX.Element {
     }, [query])
 
     return (
-        <Card data-testid="buggy-panel" className="flex h-full flex-col gap-3 border p-3 shadow-none">
+        <Card data-testid="buggy-panel" className="flex h-full flex-col gap-3 border border-default-200 p-3 shadow-none">
             <Card.Header className="p-0">
                 <Typography.Heading level={6} weight="semibold">
                     Buggy — no cleanup

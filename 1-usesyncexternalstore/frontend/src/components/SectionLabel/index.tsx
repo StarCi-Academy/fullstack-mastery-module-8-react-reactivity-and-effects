@@ -9,6 +9,6 @@ interface SectionLabelProps {
  *
  * @param props.children Label copy.
  */
-export function SectionLabel({ children }: SectionLabelProps): JSX.Element {
+export const SectionLabel = ({ children }: SectionLabelProps): JSX.Element => {
     return <span className="text-sm font-semibold text-foreground">{children}</span>
 }

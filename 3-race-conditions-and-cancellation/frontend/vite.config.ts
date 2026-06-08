@@ -7,6 +7,6 @@ export default defineConfig({
   server: {
     // Pin the dev port in source (not via a CLI --port flag) so `npm run dev`
     // behaves identically on Windows and Linux. Frontend runs on 3200.
-    port: 3200,
+    port: Number(process.env.FE_PORT ?? "3200"),
   },
 })

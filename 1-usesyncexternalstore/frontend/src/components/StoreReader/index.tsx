@@ -24,7 +24,7 @@ interface StoreReaderProps {
  * @param props.label Human label for this reader row.
  * @param props.slot Playwright suffix (`a` / `b`).
  */
-export function StoreReader({ label, slot }: StoreReaderProps): JSX.Element {
+export const StoreReader = ({ label, slot }: StoreReaderProps): JSX.Element => {
     const tick = useTick()
 
     // Count renders via a ref so reading the count does not cause a render.
@@ -34,7 +34,7 @@ export function StoreReader({ label, slot }: StoreReaderProps): JSX.Element {
     return (
         <Card
             data-testid={`reader-${slot}`}
-            className="flex min-w-0 flex-1 flex-col gap-2 border p-3 shadow-none"
+            className="flex min-w-0 flex-1 flex-col gap-2 border border-default-200 p-3 shadow-none"
         >
             <Card.Content className="flex flex-col gap-2 p-0">
                 <SubLabel>{label}</SubLabel>

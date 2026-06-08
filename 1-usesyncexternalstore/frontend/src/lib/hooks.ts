@@ -15,7 +15,7 @@ import {
  * within one render pass sees the SAME value — no tearing — and the value is
  * always exactly the store's current snapshot.
  */
-export function useTick(): number {
+export const useTick = (): number => {
     return useSyncExternalStore(tickStore.subscribe, tickStore.getSnapshot)
 }
 
@@ -25,7 +25,7 @@ export function useTick(): number {
  * mirror updates only AFTER React commits and runs the effect, so during a
  * synchronous burst of store updates it can lag behind the real snapshot.
  */
-export function useBuggyTickMirror(): number {
+export const useBuggyTickMirror = (): number => {
     // Bug on purpose: an effect-based mirror that snapshots ONCE on mount and
     // never subscribes, so once the store moves on the mirror stays stale and
     // visibly tears away from the `useSyncExternalStore` reader.
@@ -46,7 +46,7 @@ export function useBuggyTickMirror(): number {
  * server snapshot so the same hook is safe under SSR. This is the production
  * pattern for `useWindowSize` / `useMediaQuery` / `useOnlineStatus`.
  */
-export function useWindowSize(): WindowSize {
+export const useWindowSize = (): WindowSize => {
     return useSyncExternalStore(
         subscribeToWindowSize,
         getWindowSizeSnapshot,
@@ -60,7 +60,7 @@ export function useWindowSize(): WindowSize {
  * the most recent committed result even when a slow earlier request resolves
  * after a fast later one.
  */
-export function useQuery(): QueryState {
+export const useQuery = (): QueryState => {
     return useSyncExternalStore(
         queryStore.subscribe,
         queryStore.getSnapshot,

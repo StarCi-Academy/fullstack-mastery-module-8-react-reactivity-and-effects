@@ -78,7 +78,7 @@ export const MessageList = forwardRef<MessageListHandle, MessageListProps>(
                         <Card
                             key={m.id}
                             data-testid={`message-${m.id}`}
-                            className="border shadow-none rounded-medium px-3 py-2"
+                            className="border border-default-200 shadow-none rounded-medium px-3 py-2"
                         >
                             <Typography.Paragraph size="sm">{m.text}</Typography.Paragraph>
                         </Card>

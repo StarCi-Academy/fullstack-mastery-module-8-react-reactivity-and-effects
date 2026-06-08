@@ -10,7 +10,7 @@ import { FixedPanel } from "../EffectPanel/FixedPanel"
  * fixed panel derives it inline during render. The render counters make the
  * difference observable.
  */
-export function EffectClient(): JSX.Element {
+export const EffectClient = (): JSX.Element => {
     return (
         <div className="flex flex-col gap-3">
             <Legend />

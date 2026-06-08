@@ -22,7 +22,7 @@ const SEED_MESSAGES: ChatMessage[] = Array.from({ length: 8 }, (_, i) => ({
  * The message array is the only React state here; the input's text stays in the
  * DOM (uncontrolled), demonstrating imperative escape hatches alongside state.
  */
-export function RefsClient(): JSX.Element {
+export const RefsClient = (): JSX.Element => {
     // Typed refs to each child's published imperative handle.
     const inputRef = useRef<MessageInputHandle>(null)
     const listRef = useRef<MessageListHandle>(null)
@@ -80,7 +80,7 @@ export function RefsClient(): JSX.Element {
                 </Button>
                 <Button
                     data-testid="btn-check-bottom"
-                    variant="ghost"
+                    variant="outline"
                     onPress={(): void => setAtBottom(listRef.current?.isAtBottom() ?? null)}
                 >
                     Check position

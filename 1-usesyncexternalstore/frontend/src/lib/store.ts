@@ -29,7 +29,7 @@ export interface ExternalStore<T> {
  * The value must be REPLACED (never mutated) so that `Object.is(prev, next)`
  * inside `useSyncExternalStore` can detect a real change and trigger a render.
  */
-export function createExternalStore<T>(initial: T): ExternalStore<T> {
+export const createExternalStore = <T,>(initial: T): ExternalStore<T> => {
     let value = initial
     const listeners = new Set<Listener>()
 
@@ -62,12 +62,12 @@ export function createExternalStore<T>(initial: T): ExternalStore<T> {
 export const tickStore = createExternalStore<number>(0)
 
 /** Increment the tick value by one — called from the button handler. */
-export function incrementTick(): void {
+export const incrementTick = (): void => {
     tickStore.setSnapshot(tickStore.getSnapshot() + 1)
 }
 
 /** Reset the tick value back to zero. */
-export function resetTick(): void {
+export const resetTick = (): void => {
     tickStore.setSnapshot(0)
 }
 
@@ -76,7 +76,7 @@ export function resetTick(): void {
  * between a `useSyncExternalStore` reader (always exact) and a buggy
  * `useEffect`-mirror reader (which can lag behind).
  */
-export function burstTick(times: number): void {
+export const burstTick = (times: number): void => {
     for (let i = 0; i < times; i += 1) incrementTick()
 }
 
@@ -91,7 +91,7 @@ export interface WindowSize {
  * `useSyncExternalStore` subscribe function for a browser API: wire the native
  * event, return a cleanup that removes it.
  */
-export function subscribeToWindowSize(listener: Listener): () => void {
+export const subscribeToWindowSize = (listener: Listener): () => void => {
     window.addEventListener("resize", listener)
     return (): void => window.removeEventListener("resize", listener)
 }
@@ -102,7 +102,7 @@ export function subscribeToWindowSize(listener: Listener): () => void {
 let cachedSize: WindowSize = { width: 0, height: 0 }
 
 /** Read the current window size, returning a cached object when unchanged. */
-export function getWindowSizeSnapshot(): WindowSize {
+export const getWindowSizeSnapshot = (): WindowSize => {
     const width = window.innerWidth
     const height = window.innerHeight
     if (width !== cachedSize.width || height !== cachedSize.height) {
@@ -112,7 +112,7 @@ export function getWindowSizeSnapshot(): WindowSize {
 }
 
 /** Server snapshot for window size — there is no `window` during SSR. */
-export function getWindowSizeServerSnapshot(): WindowSize {
+export const getWindowSizeServerSnapshot = (): WindowSize => {
     return { width: 0, height: 0 }
 }
 
@@ -136,7 +136,7 @@ const queryListeners = new Set<Listener>()
 let latestQueryId = 0
 
 /** Replace the query snapshot (new reference) and notify subscribers. */
-function commitQuery(next: QueryState): void {
+const commitQuery = (next: QueryState): void => {
     queryState = next
     queryListeners.forEach((listener) => listener())
 }
@@ -169,7 +169,7 @@ export const queryStore = {
  * ONLY if this request is still the latest when it resolves — a slow earlier
  * request that finishes after a fast later one is dropped (latest-wins).
  */
-export function runQuery(query: string, delayMs: number): void {
+export const runQuery = (query: string, delayMs: number): void => {
     const id = ++latestQueryId
     commitQuery({ ...queryState, pending: true })
 
@@ -181,7 +181,7 @@ export function runQuery(query: string, delayMs: number): void {
 }
 
 /** Reset the query store and its id counter to the initial state. */
-export function resetQuery(): void {
+export const resetQuery = (): void => {
     latestQueryId = 0
     commitQuery({ result: "", committedId: 0, pending: false })
 }

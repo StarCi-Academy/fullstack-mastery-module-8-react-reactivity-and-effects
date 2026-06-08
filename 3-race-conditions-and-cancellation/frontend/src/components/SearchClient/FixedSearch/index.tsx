@@ -26,7 +26,7 @@ interface FixedSearchProps {
  * The result: `fixed-committed-query` always reflects the **latest** query,
  * regardless of which response physically resolves last.
  */
-export function FixedSearch({ query }: FixedSearchProps): JSX.Element {
+export const FixedSearch = ({ query }: FixedSearchProps): JSX.Element => {
     // Results shown plus the query they belong to. With the guards in place the
     // committed query always converges to the latest input.
     const [results, setResults] = useState<string[]>([])
@@ -78,7 +78,7 @@ export function FixedSearch({ query }: FixedSearchProps): JSX.Element {
     }, [query])
 
     return (
-        <Card data-testid="fixed-panel" className="flex h-full flex-col gap-3 border p-3 shadow-none">
+        <Card data-testid="fixed-panel" className="flex h-full flex-col gap-3 border border-default-200 p-3 shadow-none">
             <Card.Header className="p-0">
                 <Typography.Heading level={6} weight="semibold">
                     Fixed — AbortController + ignore

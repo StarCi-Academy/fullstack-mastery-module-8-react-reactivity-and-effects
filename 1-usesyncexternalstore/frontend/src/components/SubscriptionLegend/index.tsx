@@ -5,7 +5,7 @@ import { Typography } from "@heroui/react"
  * two readers subscribed to one external store always agree, and the buggy
  * effect-mirror is the contrast.
  */
-export function SubscriptionLegend(): JSX.Element {
+export const SubscriptionLegend = (): JSX.Element => {
     return (
         <Typography.Paragraph size="sm" color="muted">
             Both readers subscribe to the same external store via

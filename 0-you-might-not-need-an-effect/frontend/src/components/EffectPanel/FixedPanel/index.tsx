@@ -17,7 +17,7 @@ import { UserList } from "../UserList"
  *     (empty) query, so the list is correct on the very first paint with no
  *     effect-driven catch-up frame.
  */
-export function FixedPanel(): JSX.Element {
+export const FixedPanel = (): JSX.Element => {
     const [query, setQuery] = useState("")
     // Derived during render — no extra state, no effect, always in sync.
     const filtered = filterUsers(USERS, query)
@@ -26,7 +26,7 @@ export function FixedPanel(): JSX.Element {
     renderRef.current += 1
 
     return (
-        <Card data-testid="fixed-panel" className="flex flex-col gap-3 p-3 shadow-none border">
+        <Card data-testid="fixed-panel" className="flex flex-col gap-3 shadow-none border border-default-200 p-3">
             <Card.Header className="p-0">
                 <Typography.Heading level={6} weight="semibold">
                     Fixed — derived in render

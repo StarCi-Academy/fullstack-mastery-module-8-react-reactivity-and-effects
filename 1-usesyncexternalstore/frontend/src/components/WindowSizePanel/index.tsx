@@ -8,7 +8,7 @@ import { useWindowSize } from "../../lib"
  * event and getSnapshot reads `window.innerWidth/innerHeight`, so the values
  * stay in sync with the viewport with no effect-based mirroring.
  */
-export function WindowSizePanel(): JSX.Element {
+export const WindowSizePanel = (): JSX.Element => {
     const { width, height } = useWindowSize()
 
     return (

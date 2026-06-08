@@ -11,7 +11,7 @@ import { burstTick, incrementTick, resetTick } from "../../lib"
  * expose the lag of a `useEffect`-mirror reader versus a `useSyncExternalStore`
  * reader.
  */
-export function ControlPanel(): JSX.Element {
+export const ControlPanel = (): JSX.Element => {
     return (
         <section data-testid="control-panel" className="flex flex-col gap-2">
             <SectionLabel>Controls</SectionLabel>

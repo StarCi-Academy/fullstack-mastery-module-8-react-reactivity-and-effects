@@ -20,14 +20,14 @@ const SLOW_MS = 600
 const FAST_MS = 80
 
 /** Compute a deterministic delay so the race is reproducible across runs. */
-export function delayForQuery(query: string): number {
+export const delayForQuery = (query: string): number => {
     // Each extra character shaves latency; clamp to FAST_MS as the floor.
     const computed = SLOW_MS - query.trim().length * 130
     return Math.max(FAST_MS, computed)
 }
 
 /** Build the fake result rows for a query. */
-function resultsFor(query: string): string[] {
+const resultsFor = (query: string): string[] => {
     const q = query.trim()
     if (q === "") return []
     // Deterministic, query-derived rows so assertions can match on text.
@@ -39,7 +39,7 @@ function resultsFor(query: string): string[] {
  * aborts before the delay elapses — mirroring how `fetch(url, { signal })`
  * behaves, so the fixed component can cancel an in-flight request.
  */
-export function searchApi(query: string, signal?: AbortSignal): Promise<string[]> {
+export const searchApi = (query: string, signal?: AbortSignal): Promise<string[]> => {
     const ms = delayForQuery(query)
     return new Promise<string[]>((resolve, reject) => {
         // Already aborted before we even start — reject immediately.

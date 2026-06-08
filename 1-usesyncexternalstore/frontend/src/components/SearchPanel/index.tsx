@@ -5,10 +5,10 @@ import { SubLabel } from "../SubLabel"
 import { resetQuery, runQuery, useQuery } from "../../lib"
 
 /** HeroUI Chip color + background for query pending state (matches M12 upload status chip). */
-function queryChipColor(pending: boolean): {
+const queryChipColor = (pending: boolean): {
     textColor: "default" | "warning"
     bgClass: string
-} {
+} => {
     if (pending) return { textColor: "warning", bgClass: "bg-warning/20" }
     return { textColor: "default", bgClass: "bg-muted/20" }
 }
@@ -20,7 +20,7 @@ function queryChipColor(pending: boolean): {
  * store's `runQuery` drops any response that is no longer the latest, so the
  * committed result settles on "beta" even though "alpha" resolves last.
  */
-export function SearchPanel(): JSX.Element {
+export const SearchPanel = (): JSX.Element => {
     const { result, pending } = useQuery()
 
     const queryStatus = useMemo((): string => (pending ? "pending" : "idle"), [pending])

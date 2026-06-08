@@ -33,7 +33,7 @@ export const USERS: User[] = [
  * calls it inline during render, while the BUGGY panel mirrors its result into
  * extra state via an effect.
  */
-export function filterUsers(users: User[], query: string): User[] {
+export const filterUsers = (users: User[], query: string): User[] => {
     const q = query.trim().toLowerCase()
     if (q === "") return users
     return users.filter((u) => u.name.toLowerCase().includes(q))

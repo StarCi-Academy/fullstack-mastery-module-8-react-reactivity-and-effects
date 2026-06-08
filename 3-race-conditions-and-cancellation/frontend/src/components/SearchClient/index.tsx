@@ -30,7 +30,7 @@ const FAST_QUERY = "react"
  * exercised. Mock delays are query-derived (short queries slow, long ones fast)
  * so the race is deterministic.
  */
-export function SearchClient(): JSX.Element {
+export const SearchClient = (): JSX.Element => {
     const [query, setQuery] = useState("")
 
     // Script the slow-then-fast race. Two timers (not one batched render) so the
@@ -42,7 +42,7 @@ export function SearchClient(): JSX.Element {
 
     return (
         <div className="flex flex-col gap-3">
-            <Card className="flex flex-col gap-3 border p-3 shadow-none">
+            <Card className="flex flex-col gap-3 border border-default-200 p-3 shadow-none">
                 <Card.Content className="flex flex-col gap-3 p-0">
                     <Typography.Paragraph size="sm" color="muted">
                         {"Type to search, or press "}

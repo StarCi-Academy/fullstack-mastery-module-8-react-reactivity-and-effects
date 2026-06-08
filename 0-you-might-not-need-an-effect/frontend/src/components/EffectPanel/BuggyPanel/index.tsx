@@ -18,7 +18,7 @@ import { UserList } from "../UserList"
  *     initial `[]`, so the list is momentarily empty / out of sync until the
  *     effect has had a chance to run. The fixed panel never has this gap.
  */
-export function BuggyPanel(): JSX.Element {
+export const BuggyPanel = (): JSX.Element => {
     const [query, setQuery] = useState("")
     // Anti-pattern: derived data duplicated into state and synced by an effect.
     const [filtered, setFiltered] = useState<User[]>([])
@@ -32,7 +32,7 @@ export function BuggyPanel(): JSX.Element {
     renderRef.current += 1
 
     return (
-        <Card data-testid="buggy-panel" className="flex flex-col gap-3 p-3 shadow-none border">
+        <Card data-testid="buggy-panel" className="flex flex-col gap-3 shadow-none border border-default-200 p-3">
             <Card.Header className="p-0">
                 <Typography.Heading level={6} weight="semibold">
                     Buggy — effect + setState
